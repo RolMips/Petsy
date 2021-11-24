@@ -1,0 +1,20 @@
+<div class="card text-white bg-secondary">
+  <h5 class="card-header">Connexion</h5>
+  <div class="card-body">
+    <%= form_for :user, url: new_session_path, html: {class: 'form-group'} do |f| %>
+      <div class="mb-1">
+        <%= f.label :login, 'Login de connexion ou Email', class: 'form-label' %>
+        <%= f.text_field :login, class: 'form-control form-control-sm' %>
+      </div>
+      <div class="mb-3">
+        <%= f.label :password, 'Mot de passe', class: 'form-label' %>
+        <%= f.password_field :password, class: 'form-control form-control-sm' %>
+      </div>
+      <div class="mb-1">
+        <button type="submit" class="btn btn-primary">Se connecter</button>
+        <a href="<%= new_password_path %>" class="btn btn-secondary">Mot de passe oublié</a>
+      </div>
+
+    <% end %>
+  </div>
+</div>

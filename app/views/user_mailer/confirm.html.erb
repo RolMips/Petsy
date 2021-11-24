@@ -1,0 +1,5 @@
+<p>Bonjour,</p>
+<p>Merci <%= @user.login %> pour votre insciption.</p>
+<p>Vous devez valider cette insciption en vous rendant sur ce lien :</p>
+<a href="<%= confirm_user_url(id: @user.id, token: @user.confirmation_token) %>"><%= confirm_user_url(id: @user.id, token: @user.confirmation_token) %></a>
+<p>Merci,<br>Petsy Team</p>

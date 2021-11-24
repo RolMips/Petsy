@@ -1,0 +1,14 @@
+<div class="card text-white bg-secondary">
+  <h5 class="card-header">Mot de passe oublié</h5>
+  <div class="card-body">
+    <%= form_for :user, url: passwords_path, html: {class: 'form-group'} do |f| %>
+      <div class="mb-3">
+        <%= f.label :email, 'Email du compte', class: 'form-label' %>
+        <%= f.email_field :email, class: 'form-control form-control-sm' %>
+      </div>
+      <div class="mb-1">
+        <button type="submit" class="btn btn-primary">Evoyer le mail de réinitialisation</button>
+      </div>
+    <% end %>
+  </div>
+</div>

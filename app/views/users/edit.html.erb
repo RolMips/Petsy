@@ -1,0 +1,49 @@
+<% content_for :content do %>
+  <% if @user.errors.any? %>
+      <div class="alert alert-danger">
+          <ul>
+            <% @user.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+      </div>
+  <% end %>
+
+  <div class="card text-white bg-secondary">
+    <h5 class="card-header">Profil</h5>
+    <div class="card-body">
+      <%= form_for @user, url: profil_path, html: {class: 'form-group'} do |f| %>
+        <% if @user.avatar %>
+          <div class="mb-1">
+            <%= image_tag @user.avatar_url %>
+          </div>
+        <% end %>
+        <div class="mb-1">
+          <%= f.label :avatar_file, 'Avatar', class: 'form-label' %>
+          <%= f.file_field :avatar_file, class: 'form-control form-control-sm' %>
+        </div>
+        <div class="mb-1">
+          <%= f.label :login, 'Login de connexion', class: 'form-label' %>
+          <%= f.text_field :login, class: 'form-control form-control-sm' %>
+        </div>
+        <div class="mb-1">
+          <%= f.label :email, 'Email', class: 'form-label' %>
+          <%= f.email_field :email, class: 'form-control form-control-sm' %>
+        </div>
+        <div class="mb-1">
+          <%= f.label :firstname, 'Prénom', class: 'form-label' %>
+          <%= f.text_field :firstname, class: 'form-control form-control-sm' %>
+        </div>
+        <div class="mb-3">
+          <%= f.label :lastname, 'Nom', class: 'form-label' %>
+          <%= f.text_field :lastname, class: 'form-control form-control-sm' %>
+        </div>
+
+        <div class="mb-1">
+          <button type="submit" class="btn btn-primary">Enregistrer</button>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+<%= render template: 'layouts/profile' %>

@@ -1,0 +1,29 @@
+<% if @user.errors.any? %>
+    <div class="alert alert-danger">
+        <ul>
+          <% @user.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+          <% end %>
+        </ul>
+    </div>
+<% end %>
+
+<div class="card text-white bg-secondary">
+  <h5 class="card-header">Enregsitrement nouveau mot de passe</h5>
+  <div class="card-body">
+    <%= form_for @user,url: password_path(@user.id), html: {class: 'form-group'} do |f| %>
+      <%= f.hidden_field :recover_password %>
+      <div class="mb-1">
+        <%= f.label :password, 'Mot de passe', class: 'form-label' %>
+        <%= f.password_field :password, class: 'form-control form-control-sm' %>
+      </div>
+      <div class="mb-3">
+        <%= f.label :password_confirmation, 'Confirmation du mot de passe', class: 'form-label' %>
+        <%= f.password_field :password_confirmation, class: 'form-control form-control-sm' %>
+      </div>
+      <div class="mb-1">
+        <button type="submit" class="btn btn-primary">Enregistrer</button>
+      </div>
+    <% end %>
+  </div>
+</div>
