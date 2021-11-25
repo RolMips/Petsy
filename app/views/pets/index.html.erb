@@ -1,5 +1,6 @@
+<% content_for :tag, :pets %>
 <% content_for :content do %>
-  <h1>Gérer mes animaux</h1>
+  <h1>Mes animaux</h1>
 
   <p class="text-start">
     <a href="<%= new_pet_path %>" class="btn btn-success">Ajouter un animal</a>
@@ -19,10 +20,10 @@
     <tbody>
       <% @pets.each do |pet| %>
         <tr>
-          <td><%=  %></td>
+          <td><%= image_tag pet.avatar_url %></td>
           <td><%= pet.name %></td>
           <td><%= pet.gender %></td>
-          <td><%= pet.age %> an(s)</td>
+          <td><%= pet.age %> </td>
           <td><%= pet.species.name %></td>
           <td>
             <%= link_to('Voir', pet, class: "btn btn-primary btn-sm") %>

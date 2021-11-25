@@ -22,6 +22,9 @@ class PetsController < ApplicationController
   def edit
   end
 
+  def show
+  end
+
   def update
     if @pet.update(pet_params)
       redirect_to pets_path, success: "Votre animal a bien été mofifié."
@@ -38,7 +41,7 @@ class PetsController < ApplicationController
   private
 
   def pet_params
-    params.require(:pet).permit(:name, :gender, :birthday, :species_id)
+    params.require(:pet).permit(:name, :gender, :birthday, :species_id, :avatar_file)
   end
 
   def set_pet

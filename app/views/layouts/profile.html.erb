@@ -4,7 +4,8 @@
   </div>
   <div class="col-md-4">
     <div class="list-group">
-      <a href="<%= pets_path %>" class="list-group-item list-group-item-secondary">Mes animaux</a>
+      <a href="<%= profil_path %>" class="list-group-item list-group-item-secondary <%= yield(:tag) == 'profiles' ? 'active' : '' %>">Mon profil</a>
+      <a href="<%= pets_path %>" class="list-group-item list-group-item-secondary <%= yield(:tag) == 'pets' ? 'active' : '' %>">Mes animaux</a>
     </div>
   </div>
 </div>

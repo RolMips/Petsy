@@ -1,9 +1,5 @@
 class User < ApplicationRecord
 
-  after_save :avatar_after_upload
-  before_save :avatar_before_upload
-  after_destroy_commit :avatar_destroy
-
   has_many :pets
 
   validates :login, uniqueness: {case_sensitive: false}, presence: true, length: {minimum:3, maximum:20},
@@ -15,13 +11,21 @@ class User < ApplicationRecord
   has_secure_password
   has_secure_token :confirmation_token
   has_secure_token :recover_password
-
-  attr_accessor :avatar_file
-  validates :avatar_file, file: {ext: [:jpg, :png]}
+  has_image :avatar, resize: 100
 
   def to_session
     {id: id}
   end
+
+# Code before has_image
+=begin
+
+  after_save :avatar_after_upload
+  before_save :avatar_before_upload
+  after_destroy_commit :avatar_destroy
+
+  attr_accessor :avatar_file
+  validates :avatar_file, file: {ext: [:jpg, :png]}
 
   def avatar_path
     File.join(Rails.public_path, 'images', self.class.name.downcase.pluralize, id.to_s, 'avatar.jpg')
@@ -58,5 +62,6 @@ class User < ApplicationRecord
     dir = File.dirname(avatar_path)
     FileUtils.rm_r(dir) if Dir.exist?(dir)
   end
+=end
 
 end

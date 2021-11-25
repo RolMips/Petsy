@@ -12,7 +12,7 @@
 
     <div class="mb-1">
       <%= f.label :name, 'Nom', class: 'form-label' %>
-      <%= f.text_field :name, class: 'form-control form-control-sm' %>
+      <%= f.text_field :name, class: 'form-control' %>
     </div>
     <div class="mb-1">
       <%= f.label :gender, 'Sexe', class: 'form-label' %>
@@ -20,11 +20,15 @@
     </div>
     <div class="mb-1">
       <%= f.label :birthday, 'Date de naissance', class: 'form-label' %>
-      <%= f.text_field :birthday, type:'date', class: 'form-control' %>
+      <%= f.date_field :birthday, class: 'form-control', min: '1900-01-01', max: Time.now %>
     </div>
     <div class="mb-3">
       <%= f.label :species_id, 'Espèce', class: 'form-label' %>
       <%= f.select :species_id, Species.pluck(:name, :id), {}, class: 'form-select' %>
+    </div>
+    <div class="mb-3">
+      <%= f.label :avatar_file, 'Avatar', class: 'form-label' %>
+      <%= f.file_field :avatar_file, class: 'form-control' %>
     </div>
 
     <div class="mb-1">
